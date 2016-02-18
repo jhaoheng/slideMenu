@@ -83,5 +83,12 @@ extern slideViewController *slideController;
  */
 @property (nonatomic, strong) UIColor *slideMask_backGround_color;
 
+
+/*
+ when slide animation activity
+ you can use it to lock amnition repeat action. if someone tap menu btn more than one time.
+ */
+@property (nonatomic) BOOL is_lock;
+
 @end
 

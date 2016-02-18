@@ -53,7 +53,9 @@
 #pragma mark - slide act
 - (void)slide_btn_action:(id)sender
 {
-    [slideViewController switchSlideMove];
+    if (!slideMenu.is_lock) {
+        [slideViewController switchSlideMove];
+    }
 }
 
 #pragma mark - slide menu delegate

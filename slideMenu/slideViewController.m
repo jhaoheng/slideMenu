@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, SMoveMode) {
 @synthesize menuArray;
 @synthesize slideMenu_backGround_color = _slideMenu_backGround_color;
 @synthesize slideMask_backGround_color = _slideMask_backGround_color;
+@synthesize is_lock;
 
 #pragma mark - view life
 - (void)viewDidLoad {
@@ -185,6 +186,8 @@ slideViewController *slideController;
 #pragma mark 移動
 - (void)slideMove:(BOOL)moveAct
 {
+    slideController.is_lock = YES;
+    
     slideMoveStatus = !slideMoveStatus;
     NSLog(@"slide menu : %@",moveAct?@"open":@"close");
     
@@ -205,7 +208,9 @@ slideViewController *slideController;
 
             }];
             
-        } completion:^(BOOL finished){}];
+        } completion:^(BOOL finished){
+            slideController.is_lock = NO;
+        }];
         
     }
     else
@@ -223,6 +228,9 @@ slideViewController *slideController;
             [UIView setAnimationDuration:.5];
             maskView.alpha = 0;
             [UIView commitAnimations];
+            
+            
+            slideController.is_lock = NO;
 
         }];
     }
