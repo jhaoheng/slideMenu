@@ -236,5 +236,17 @@ slideViewController *slideController;
     }
 }
 
+#pragma mark - touch 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    if([touch view] == self.view)
+    {
+        //close
+        [slideController slideMove:slideController.slideMoveStatus];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
 
 @end
